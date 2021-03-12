@@ -1,0 +1,377 @@
+@import "./variables";
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: lightgray;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  transition: all ease 0.2s;
+}
+
+// This is the header section mate
+.header {
+  width: 100%;
+  height: $header-height;
+  padding: 0 10%;
+  background-color: rgb(74, 189, 209);
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header__logo {
+  width: fit-content;
+  font-size: 3rem;
+  color: white;
+  font-weight: 800;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  flex: 1;
+}
+
+.header__logo--backward {
+  position: relative;
+  font-weight: 800;
+  font-size: 4rem;
+  color: rgb(94, 0, 94);
+}
+
+.header__right {
+  font-size: 1.6rem;
+  color: white;
+  font-weight: bolder;
+}
+
+.header > .search__bar {
+  flex: 1;
+  background-color: rgb(65, 68, 68);
+  display: none;
+
+  & > input {
+    &::placeholder {
+      color: rgb(204, 204, 204);
+    }
+  }
+
+  & > .separator {
+    background-color: #fff;
+  }
+}
+
+// The search orr body section of app
+.search {
+  width: 100%;
+  padding: 20px 10%;
+  height: calc(100vh - $header-height);
+  box-sizing: border-box;
+}
+
+.search__title {
+  margin: 100px auto;
+  margin-bottom: 20px;
+  width: fit-content;
+  font-size: 4rem;
+}
+
+.search__form {
+  width: 60%;
+  border-radius: 30px;
+  margin: auto;
+  background: rgb(74, 189, 209);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 8px;
+
+  & > input {
+    flex: 1;
+    columns: auto;
+    margin: 0 5px;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 1.8rem;
+  }
+
+  & > button {
+    width: 40px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: none;
+    transition-duration: 0.3s;
+    display: grid;
+    place-items: center;
+    background-color: transparent;
+    outline: none;
+
+    & > .fas {
+      font-size: 2rem;
+      color: rgb(0, 139, 163);
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+      color: #fff;
+
+      & > .fas {
+        color: #fff;
+      }
+    }
+  }
+
+  & > .clear__input {
+    width: 30px;
+    font-size: 2rem;
+    font-weight: 400;
+    color: rgb(109, 110, 110);
+  }
+
+  & > .separator {
+    width: 1px;
+    background-color: rgb(109, 110, 110);
+    margin: 0 5px;
+    height: 80%;
+  }
+}
+
+details {
+  cursor: pointer;
+  margin: 10px 0;
+
+  & > summary {
+    font-size: 1.7rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 800;
+    color: rgb(84, 94, 95);
+    outline: none;
+  }
+}
+
+.search__filters {
+  display: flex;
+  align-items: center;
+  gap: 15px 10px;
+  flex-wrap: wrap;
+  width: auto !important;
+  margin: 5px auto 30px auto;
+  box-sizing: border-box;
+
+  & > span {
+    font-size: 1.7rem;
+    padding: 7px 10px;
+    background-color: rgb(156, 156, 156);
+    border-radius: 15px;
+    color: rgb(87, 87, 87);
+    transition: unset;
+    user-select: none;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(0.97);
+    }
+
+    &.active {
+      background-color: rgb(74, 189, 209);
+    }
+  }
+}
+
+@keyframes popUp {
+  from {
+    margin-top: 80px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+.search__results {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  gap: 30px;
+
+  & > * {
+    width: 50%;
+    height: auto;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  & > .search__resultsMobile {
+    display: none;
+    width: 100%;
+    margin: auto;
+
+    & > .search__resultsBlog {
+      width: 100%;
+    }
+  }
+}
+
+.search__resultsBlog {
+  width: 100%;
+  animation: popUp 1.5s;
+  height: fit-content;
+  box-sizing: border-box;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: rgb(84, 94, 95);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3), -2px -2px 3px rgba(0, 0, 0, 0.2);
+
+  & > h2 {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: rgb(19, 195, 226);
+  }
+
+  & > img {
+    width: 100%;
+    max-height: 270px;
+    max-width: 650px;
+    object-fit: contain;
+  }
+
+  & > p {
+    font-size: 1.8rem;
+    font-weight: 600;
+    display: -webkit-flex;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    margin: 4px 0;
+    color: lightgray;
+  }
+
+  & > .info {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    & > h4 {
+      font-size: 1.6rem;
+      font-weight: bolder;
+    }
+
+    & > a {
+      padding: 5px 30px;
+      font-size: 1.4rem;
+      background-color: rgb(0, 139, 163);
+      color: lightgrey;
+      font-weight: 800;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      text-transform: uppercase;
+      text-decoration: none;
+
+      &:hover {
+        color: rgb(46, 46, 46);
+      }
+    }
+  }
+}
+
+.search__pages {
+  margin: 25px;
+  width: 100%;
+  text-align: center;
+  display: none;
+
+  & > button {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
+    color: rgb(94, 0, 94);
+    background-color: lightgray;
+    border: 1.5px solid rgb(94, 0, 94);
+    padding: 10px 30px;
+    text-transform: uppercase;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+
+    &:hover {
+      background: rgb(94, 0, 94);
+      color: lightgray;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .search__form {
+    width: 100%;
+  }
+
+  .search__results {
+    & > * {
+      display: none;
+    }
+
+    & > .search__resultsMobile {
+      display: flex;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  // .header {
+  //   padding: 5%;
+  // }
+
+  .header__right {
+    font-weight: 1rem;
+    display: none;
+  }
+
+  .search__form {
+    & > input {
+      max-width: 70%;
+    }
+  }
+
+  .search__title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-top: 60px;
+  }
+
+  .search__resultsBlog {
+    & > h2 {
+      font-size: 1.5rem;
+    }
+
+    & > p {
+      font-size: 1.4rem;
+      display: -webkit-flex !important;
+      -webkit-box-orient: vertical !important;
+      -webkit-line-clamp: 4 !important;
+    }
+
+    & > .info {
+      & > h4 {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Blogs</title>
+
+    <link rel="stylesheet" href="./css/index.css" />
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script
+      src="https://kit.fontawesome.com/764ed6c5a4.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="root">
+      <header class="header">
+        <div class="header__logo">
+          <span class="header__logo--backward">f</span>ind<span
+            class="header__logo--backward"
+            >B</span
+          >logs
+        </div>
+
+        <form class="search__bar search__form" style="border-radius: 20px">
+          <input
+            type="text"
+            id="search-input"
+            style="color: #fff"
+            placeholder="Find your blog"
+          />
+
+          <button type="reset" class="clear__input">X</button>
+          <span class="separator"></span>
+          <button class="submit__search" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+
+        <div class="header__right">
+          <i><a href="https://nduduzo.com/">Nduduzo Shabalala</a></i>
+        </div>
+      </header>
+
+      <section class="search">
+        <!-- Two blog thumbnail like structures -->
+        <!-- The where  -->
+
+        <h1 class="search__title">Find Your Next Read</h1>
+        <form class="search__form" id="search__form">
+          <input type="text" id="search-input" placeholder="Find your blog" />
+
+          <button type="reset" class="clear__input">X</button>
+          <span class="separator"></span>
+          <button class="submit__search" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+
+        <details>
+          <summary>Filter Search</summary>
+          <div class="search__filters">
+            <span onclick="applyFilter('dev.to', 1)">dev.to</span>
+            <span onclick="applyFilter('css-tricks.com', 2)"
+              >css-tricks.com</span
+            >
+            <span onclick="applyFilter('feecodecamp.org', 3)"
+              >feecodecamp.org</span
+            >
+            <span onclick="applyFilter('codepen.io', 4)">codepen.io</span>
+            <span onclick="applyFilter('hashnode.com', 5)">hashnode.com</span>
+            <span onclick="applyFilter('smashingmagazine.com', 6)"
+              >smashingmagazine.com</span
+            >
+            <span onclick="applyFilter('hongkiat.com', 7)">hongkiat.com</span>
+          </div>
+        </details>
+
+        <div class="search__fixedTypo"></div>
+
+        <div class="search__results">
+          <!-- All the blogs we get will go in here -->
+          <div class="search__resultsLeft"></div>
+          <div class="search__resultsRight"></div>
+          <div class="search__resultsMobile"></div>
+        </div>
+
+        <div class="search__pages">
+          <button>Load More</button>
+        </div>
+      </section>
+
+      <!-- The search can be customised to find specific blogs -->
+      <!-- While searching. Do book paging animation. Should be available online -->
+    </div>
+
+    <script src="./index.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- <script src="/__/firebase/8.2.10/firebase-app.js"></script> -->
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <!-- Initialize Firebase -->
+    <!-- <script src="/__/firebase/init.js"></script> -->
+  </body>
+</html>
