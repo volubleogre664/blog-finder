@@ -85,6 +85,7 @@ function execute(search) {
 
           printBlogs(_blogs);
           blogs = blogs.concat(_blogs);
+          input.map((item) => (item.value = searchStr));
           // console.log(blogs);
         }
       },
@@ -102,7 +103,7 @@ function printBlogs(_blogs) {
     <img src="${item.img}" alt="article banner">
     <p style="-webkit-box-orient: vertical;">${item.description}</p>
     <div class="info">
-      <h4><b><i>by:</i></b>${item.author}</h4>
+      <h4><b><i>by: </i></b>${item.author}</h4>
       <a href="${item.url}">Read</a>
     </div>
   </div>`;
@@ -146,11 +147,6 @@ function isInViewport(element) {
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 }
-
-//Prepare search and pass to execute
-// async function search(e) {
-
-// }
 
 //Filter results based on url selected by user
 // If prev filter == current filter then just remove filter and show results
@@ -230,6 +226,9 @@ document.querySelectorAll(".search__form > .submit__search").forEach((item) => {
       }
 
       // console.log("Yey or nay");
+      document.querySelector(
+        ".search > .search__form > input"
+      ).value = searchStr;
 
       await execute({ query: searchStr, filter: searchFiltter, start });
       document.querySelector(".search__pages").style.display = "block";
