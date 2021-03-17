@@ -11,7 +11,7 @@ firebase-debug.*.log*
 .firebase/
 
 # API
-/api.txt
+api.txt
 
 # Firebase config
 

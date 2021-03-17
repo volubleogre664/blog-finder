@@ -1,18 +1,14 @@
 // Setting up the google client
 window.onload = function loadClient() {
-  gapi.client.setApiKey("API");
-  return gapi.client
-    .load(
-      "https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest"
-    )
-    .then(
-      function () {
-        console.log("GAPI client loaded for API");
-      },
-      function (err) {
-        console.error("Error loading GAPI client for API", err);
-      }
-    );
+  gapi.client.setApiKey("API_KEY");
+  return gapi.client.load("LOAD_GAPI_LINK").then(
+    function () {
+      console.log("GAPI client loaded for API");
+    },
+    function (err) {
+      console.error("Error loading GAPI client for API", err);
+    }
+  );
 };
 
 window.onresize = function () {
@@ -62,7 +58,7 @@ function execute(search) {
 
           // console.log(result);
 
-          result.items.forEach((item, i) => {
+          result.items?.forEach((item, i) => {
             let dt = undefined;
 
             if (item?.pagemap?.metatags) dt = item?.pagemap?.metatags[0];
@@ -85,7 +81,7 @@ function execute(search) {
 
           printBlogs(_blogs);
           blogs = blogs.concat(_blogs);
-          input.map((item) => (item.value = searchStr));
+          // input.map((item) => (item.value = searchStr));
           // console.log(blogs);
         }
       },
@@ -219,6 +215,15 @@ document.querySelectorAll(".search__form > .submit__search").forEach((item) => {
       searchStr = searchStr.replace(regex, " ");
 
       if (isNewSearch) {
+        setTimeout(() => {
+          !document
+            .querySelector(".search__pages")
+            .classList.contains("visible") &&
+            document
+              .querySelector(".search__pages")
+              .classList.toggle("visible");
+        }, 3000);
+
         document.querySelector(".search__fixedTypo").innerHTML = "";
         emptyDivs();
         blogs = new Array();
@@ -231,7 +236,6 @@ document.querySelectorAll(".search__form > .submit__search").forEach((item) => {
       ).value = searchStr;
 
       await execute({ query: searchStr, filter: searchFiltter, start });
-      document.querySelector(".search__pages").style.display = "block";
     }
   });
 });

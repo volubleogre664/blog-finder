@@ -306,6 +306,10 @@ details > summary {
   color: lightgray;
 }
 
+.search__pages.visible {
+  display: block;
+}
+
 @media screen and (max-width: 768px) {
   .search {
     padding-left: 10%;

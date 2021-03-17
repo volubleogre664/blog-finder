@@ -311,6 +311,10 @@ details {
       color: lightgray;
     }
   }
+
+  &.visible {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 768px) {
