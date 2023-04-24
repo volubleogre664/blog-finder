@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="./css/index.css" />
 
     <script src="https://apis.google.com/js/api.js"></script>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
     <script
       src="https://kit.fontawesome.com/764ed6c5a4.js"
       crossorigin="anonymous"
@@ -16,7 +19,7 @@
   </head>
 
   <body>
-    <div class="root">
+    <div id="container" class="root">
       <header class="header">
         <div class="header__logo">
           <span class="header__logo--backward">f</span>ind<span
@@ -25,7 +28,7 @@
           >logs
         </div>
 
-        <form class="search__bar search__form" style="border-radius: 20px">
+        <!-- <form id="search__formID" class="search__bar search__form" style="border-radius: 20px">
           <input
             type="text"
             id="search-input"
@@ -38,7 +41,9 @@
           <button class="submit__search" type="submit">
             <i class="fas fa-search"></i>
           </button>
-        </form>
+        </form> -->
+
+        <my-input></my-input>
 
         <div class="header__right">
           <i><a href="https://nduduzo.com/">Nduduzo Shabalala</a></i>
@@ -50,15 +55,7 @@
         <!-- The where  -->
 
         <h1 class="search__title">Find Your Next Read</h1>
-        <form class="search__form" id="search__form">
-          <input type="text" id="search-input" placeholder="Find your blog" />
-
-          <button type="reset" class="clear__input">X</button>
-          <span class="separator"></span>
-          <button class="submit__search" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
+        <my-input></my-input>
 
         <details>
           <summary>Filter Search</summary>
@@ -97,7 +94,15 @@
       <!-- While searching. Do book paging animation. Should be available online -->
     </div>
 
-    <script src="./index.js"></script>
+    <script type="module" src="./index.js"></script>
+    <!-- <script type="module" src="./main.js"></script> -->
+    <script type="module" src="./components/Input.js"></script>
+
+    <script type="module">
+      import app from "./main.js";
+
+      const mountedApp = app.mount("#container");
+    </script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <!-- <script src="/__/firebase/8.2.10/firebase-app.js"></script> -->

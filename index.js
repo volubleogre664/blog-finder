@@ -1,14 +1,18 @@
 // Setting up the google client
 window.onload = function loadClient() {
-  gapi.client.setApiKey("API_KEY");
-  return gapi.client.load("LOAD_GAPI_LINK").then(
-    function () {
-      console.log("GAPI client loaded for API");
-    },
-    function (err) {
-      console.error("Error loading GAPI client for API", err);
-    }
-  );
+  gapi.client.setApiKey("AIzaSyBjxzaqNvK_eBEn7R_Kk2glNF9pUq0penw");
+  return gapi.client
+    .load(
+      "https://content.googleapis.com/discovery/v1/apis/customsearch/v1/rest"
+    )
+    .then(
+      function () {
+        console.log("GAPI client loaded for API");
+      },
+      function (err) {
+        console.error("Error loading GAPI client for API", err);
+      }
+    );
 };
 
 window.onresize = function () {
@@ -92,7 +96,7 @@ function execute(search) {
 }
 
 // Adding blogs to dom
-function printBlogs(_blogs) {
+export function printBlogs(_blogs) {
   _blogs.forEach((item, i) => {
     const blogHTML = `<div class="search__resultsBlog">
     <h2>${item.title}</h2>
@@ -230,28 +234,26 @@ document.querySelectorAll(".search__form > .submit__search").forEach((item) => {
         isNewSearch = false;
       }
 
-      // console.log("Yey or nay");
-      document.querySelector(
-        ".search > .search__form > input"
-      ).value = searchStr;
+      document.querySelector(".search > .search__form > input").value =
+        searchStr;
 
       await execute({ query: searchStr, filter: searchFiltter, start });
     }
   });
 });
 
-document
-  .querySelector(".search__form > .clear__input")
-  .addEventListener("click", (e) => {
-    e.preventDefault();
-    input.value = "";
+// document
+//   .querySelector(".search__form > .clear__input")
+//   .addEventListener("click", (e) => {
+//     e.preventDefault();
+//     input.value = "";
 
-    isNewSearch = true;
-    blogs = [];
-    start = 1;
-    prevFilter = "";
-    totalResults = 0;
-  });
+//     isNewSearch = true;
+//     blogs = [];
+//     start = 1;
+//     prevFilter = "";
+//     totalResults = 0;
+//   });
 
 document
   .querySelector(".search__pages")
