@@ -1,5 +1,3 @@
-import { printBlogs } from "../index.js";
-
 // Validating url
 function validURL(str) {
   var pattern = new RegExp(
@@ -58,7 +56,7 @@ function execute(search) {
             _blogs.push(blog);
           });
 
-          printBlogs(_blogs);
+          //printBlogs(_blogs);
 
           return _blogs;
         }

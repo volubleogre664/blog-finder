@@ -21,7 +21,7 @@ window.onresize = function () {
 
   if (isMobile !== temp) {
     emptyDivs();
-    printBlogs(blogs);
+    //printBlogs(blogs);
   }
 };
 
@@ -83,7 +83,7 @@ function execute(search) {
             _blogs.push(blog);
           });
 
-          printBlogs(_blogs);
+          //printBlogs(_blogs);
           blogs = blogs.concat(_blogs);
           // input.map((item) => (item.value = searchStr));
           // console.log(blogs);
@@ -98,15 +98,7 @@ function execute(search) {
 // Adding blogs to dom
 export function printBlogs(_blogs) {
   _blogs.forEach((item, i) => {
-    const blogHTML = `<div class="search__resultsBlog">
-    <h2>${item.title}</h2>
-    <img src="${item.img}" alt="article banner">
-    <p style="-webkit-box-orient: vertical;">${item.description}</p>
-    <div class="info">
-      <h4><b><i>by: </i></b>${item.author}</h4>
-      <a href="${item.url}">Read</a>
-    </div>
-  </div>`;
+    const blogHTML = ``;
 
     const right = document.querySelector(".search__resultsRight");
     const left = document.querySelector(".search__resultsLeft");

@@ -55,7 +55,7 @@
         <!-- The where  -->
 
         <h1 class="search__title">Find Your Next Read</h1>
-        <my-input></my-input>
+        <my-input @push-to-blogs="updateBlogs"></my-input>
 
         <details>
           <summary>Filter Search</summary>
@@ -80,7 +80,13 @@
 
         <div class="search__results">
           <!-- All the blogs we get will go in here -->
-          <div class="search__resultsLeft"></div>
+          <div class="search__resultsLeft">
+            <blog-card
+              v-for="(item, index)  in blogs"
+              :key="index"
+              :blog="item"
+            ></blog-card>
+          </div>
           <div class="search__resultsRight"></div>
           <div class="search__resultsMobile"></div>
         </div>
@@ -97,6 +103,7 @@
     <script type="module" src="./index.js"></script>
     <!-- <script type="module" src="./main.js"></script> -->
     <script type="module" src="./components/Input.js"></script>
+    <script type="module" src="./components/BlogDisplay.js"></script>
 
     <script type="module">
       import app from "./main.js";
