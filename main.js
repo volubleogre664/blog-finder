@@ -8,7 +8,6 @@ const app = Vue.createApp({
   methods: {
     updateBlogs(blogs) {
       this.blogs = blogs;
-      console.log("Called updateBlogs");
     },
   },
 });

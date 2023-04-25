@@ -34,9 +34,6 @@ app.component("my-input", {
 
   methods: {
     async onSubmit(e) {
-      console.log("onSubmit");
-      e.preventDefault();
-
       const { isNewSearch, start } = prepareSearchQuery(
         this.searchStr,
         true,
@@ -44,7 +41,8 @@ app.component("my-input", {
       );
       this.start = start;
 
-      app.updateBlogs(
+      this.$emit(
+        "push-to-blogs",
         await execute({
           query: this.searchStr,
           filter: this.searchFiltter,
