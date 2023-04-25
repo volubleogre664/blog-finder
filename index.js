@@ -15,15 +15,15 @@ window.onload = function loadClient() {
     );
 };
 
-window.onresize = function () {
-  const temp = isMobile;
-  isMobile = window.innerWidth < 768;
+// window.onresize = function () {
+//   const temp = isMobile;
+//   isMobile = window.innerWidth < 768;
 
-  if (isMobile !== temp) {
-    emptyDivs();
-    //printBlogs(blogs);
-  }
-};
+//   if (isMobile !== temp) {
+//     emptyDivs();
+//     //printBlogs(blogs);
+//   }
+// };
 
 window.onscroll = function () {
   const isOnScreen = isInViewport(document.getElementById("search__form"));
@@ -142,34 +142,6 @@ function isInViewport(element) {
 
 //Filter results based on url selected by user
 // If prev filter == current filter then just remove filter and show results
-const applyFilter = (filter, pos) => {
-  start = 1;
-  const i = pos - 1;
-  let isNewFilter = filter === prevFilter;
-  searchFiltter = isNewFilter ? "" : `cite:${filter} `;
-
-  document.querySelectorAll(".search__filters > span").forEach((item, _i) => {
-    item.classList.contains("active") &&
-      _i !== i &&
-      item.classList.toggle("active");
-
-    _i === i && item.classList.toggle("active");
-  });
-
-  if (!isNewSearch) {
-    emptyDivs();
-    execute({
-      query: searchStr,
-      filter: searchFiltter,
-      start: 1,
-    });
-    blogs = new Array();
-  }
-
-  document.querySelector("summary").innerText =
-    "Filter Search: " + searchFiltter?.substr(5);
-  searchFiltter === "" ? (prevFilter = searchFiltter) : (prevFilter = filter);
-};
 
 // Remove content for new results to be shown
 const emptyDivs = () => {
@@ -198,41 +170,41 @@ input.forEach((item) => {
   });
 });
 
-document.querySelectorAll(".search__form > .submit__search").forEach((item) => {
-  item.addEventListener("click", async function (e) {
-    e.preventDefault();
-    start = 1;
-    isNewSearch = true;
-    let regex = / /gi;
-    const str = searchStr.replace(regex, "");
-    if (str !== "") {
-      regex = /</gi;
+// document.querySelectorAll(".search__form > .submit__search").forEach((item) => {
+//   item.addEventListener("click", async function (e) {
+//     e.preventDefault();
+//     start = 1;
+//     isNewSearch = true;
+//     let regex = / /gi;
+//     const str = searchStr.replace(regex, "");
+//     if (str !== "") {
+//       regex = /</gi;
 
-      searchStr = searchStr.replace(regex, " ");
+//       searchStr = searchStr.replace(regex, " ");
 
-      if (isNewSearch) {
-        setTimeout(() => {
-          !document
-            .querySelector(".search__pages")
-            .classList.contains("visible") &&
-            document
-              .querySelector(".search__pages")
-              .classList.toggle("visible");
-        }, 3000);
+//       if (isNewSearch) {
+//         setTimeout(() => {
+//           !document
+//             .querySelector(".search__pages")
+//             .classList.contains("visible") &&
+//             document
+//               .querySelector(".search__pages")
+//               .classList.toggle("visible");
+//         }, 3000);
 
-        document.querySelector(".search__fixedTypo").innerHTML = "";
-        emptyDivs();
-        blogs = new Array();
-        isNewSearch = false;
-      }
+//         document.querySelector(".search__fixedTypo").innerHTML = "";
+//         emptyDivs();
+//         blogs = new Array();
+//         isNewSearch = false;
+//       }
 
-      document.querySelector(".search > .search__form > input").value =
-        searchStr;
+//       document.querySelector(".search > .search__form > input").value =
+//         searchStr;
 
-      await execute({ query: searchStr, filter: searchFiltter, start });
-    }
-  });
-});
+//       await execute({ query: searchStr, filter: searchFiltter, start });
+//     }
+//   });
+// });
 
 // document
 //   .querySelector(".search__form > .clear__input")

@@ -98,4 +98,29 @@ function prepareSearchQuery(searchStr, isNewSearch, start) {
   return { start, isNewSearch: false };
 }
 
-export { execute, prepareSearchQuery };
+async function applyFilter(searchStr, filter) {
+  // start = 1;
+  // const i = pos - 1;
+  // let isNewFilter = filter === prevFilter;
+  console.log(searchStr);
+  let searchFiltter = `cite:${filter} `;
+
+  // document.querySelectorAll(".search__filters > span").forEach((item, _i) => {
+  //   item.classList.contains("active") &&
+  //     _i !== i &&
+  //     item.classList.toggle("active");
+
+  //   _i === i && item.classList.toggle("active");
+  // });
+  return await execute({
+    query: searchStr,
+    filter: searchFiltter,
+    start: 1,
+  });
+
+  // document.querySelector("summary").innerText =
+  //   "Filter Search: " + searchFiltter?.substr(5);
+  searchFiltter === "" ? (prevFilter = searchFiltter) : (prevFilter = filter);
+}
+
+export { execute, prepareSearchQuery, applyFilter };

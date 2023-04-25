@@ -41,6 +41,8 @@ app.component("my-input", {
       );
       this.start = start;
 
+      this.$emit("update-search-str", this.searchStr);
+
       this.$emit(
         "push-to-blogs",
         await execute({

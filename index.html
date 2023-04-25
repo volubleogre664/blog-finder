@@ -28,22 +28,7 @@
           >logs
         </div>
 
-        <!-- <form id="search__formID" class="search__bar search__form" style="border-radius: 20px">
-          <input
-            type="text"
-            id="search-input"
-            style="color: #fff"
-            placeholder="Find your blog"
-          />
-
-          <button type="reset" class="clear__input">X</button>
-          <span class="separator"></span>
-          <button class="submit__search" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </form> -->
-
-        <my-input></my-input>
+        <!-- <my-input @update></my-input> -->
 
         <div class="header__right">
           <i><a href="https://nduduzo.com/">Nduduzo Shabalala</a></i>
@@ -55,9 +40,18 @@
         <!-- The where  -->
 
         <h1 class="search__title">Find Your Next Read</h1>
-        <my-input @push-to-blogs="updateBlogs"></my-input>
 
-        <details>
+        <my-input
+          @update-search-str="updateSearchStr"
+          @push-to-blogs="updateBlogs"
+        ></my-input>
+
+        <blog-sources
+          :sources="blogSources"
+          :searchStr="searchStr"
+        ></blog-sources>
+
+        <!-- <details>
           <summary>Filter Search</summary>
           <div class="search__filters">
             <span onclick="applyFilter('dev.to', 1)">dev.to</span>
@@ -74,7 +68,7 @@
             >
             <span onclick="applyFilter('hongkiat.com', 7)">hongkiat.com</span>
           </div>
-        </details>
+        </details> -->
 
         <div class="search__fixedTypo"></div>
 
@@ -103,7 +97,9 @@
     <script type="module" src="./index.js"></script>
     <!-- <script type="module" src="./main.js"></script> -->
     <script type="module" src="./components/Input.js"></script>
-    <script type="module" src="./components/BlogDisplay.js"></script>
+    <script type="module" src="./components/BlogCard.js"></script>
+    <script type="module" src="./components/Pill.js"></script>
+    <script type="module" src="./components/Sources.js"></script>
 
     <script type="module">
       import app from "./main.js";
